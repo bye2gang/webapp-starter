@@ -1,0 +1,8 @@
+# pnpm の設定。ネイティブビルドが必要な依存だけ、明示的にビルドを許可する。
+# （無断でビルドスクリプトを走らせないのが pnpm のセキュリティ既定。許可リストで運用する）
+allowBuilds:
+  sharp: true
+  unrs-resolver: true
+  esbuild: true
+  "@tailwindcss/oxide": true
+  lefthook: true

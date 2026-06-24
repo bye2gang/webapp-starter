@@ -1,0 +1,14 @@
+# Git のコミット直前に走る軽量チェック（速く・変更ファイルだけが原則）。
+# 重い型チェックや全テストは CI に任せる（遅いと --no-verify 癖がついて形骸化するため）。
+pre-commit:
+  parallel: true
+  commands:
+    # 秘密情報の漏洩防止（最重要・リポジトリ公開/非公開に依存しない確実な防御）。
+    # 要 gitleaks: `brew install gitleaks`
+    gitleaks:
+      run: gitleaks git --staged --no-banner
+    # 変更された JS/TS/JSON だけ Biome で整形＋Lint（自動修正し、直した分を再ステージ）
+    biome:
+      glob: "*.{js,jsx,ts,tsx,json,jsonc}"
+      run: pnpm biome check --write --no-errors-on-unmatched {staged_files}
+      stage_fixed: true

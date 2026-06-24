@@ -1,0 +1,14 @@
+# テキストファイルの改行を LF に統一（OS差・git の autocrlf 設定に依存しない）。
+# JS/TS ツール（Biome 等）は LF 前提なので、CRLF 混入による無駄な差分を防ぐ。
+* text=auto eol=lf
+
+# バイナリは変換しない
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.woff binary
+*.woff2 binary
+*.lockb binary
