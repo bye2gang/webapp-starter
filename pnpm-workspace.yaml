@@ -6,3 +6,8 @@ allowBuilds:
   esbuild: true
   "@tailwindcss/oxide": true
   lefthook: true
+
+# 既知の脆弱性対策などで依存のバージョンを強制する（pnpm 11 ではここが overrides の置き場）。
+# postcss: next 経由で入る 8.4.31 に XSS(medium) があるため修正版以上に固定。
+overrides:
+  postcss: ">=8.5.10"
