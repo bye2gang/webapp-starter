@@ -18,7 +18,7 @@ jobs:
 
       # ★順序が重要: pnpm を先に入れてから Node をセットアップする。
       #   逆にすると「pnpm が見つからない」で初回CIが赤くなる。
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
 
       - uses: actions/setup-node@v4
         with:
